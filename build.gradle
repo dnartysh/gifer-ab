@@ -1,22 +1,40 @@
 plugins {
-    id 'war'
+    id 'org.springframework.boot' version '2.3.5.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.10.RELEASE'
     id 'java'
+    id 'application'
 }
 
-group 'org.dnartysh'
+group 'ru.alfabank'
 version '1.0-SNAPSHOT'
+
+task copyJarToRoot {
+    doLast {
+        copy {
+            from './build/libs/gifer-1.0.0.jar'
+            into "./"
+        }
+    }
+}
 
 repositories {
     mavenCentral()
-    mavenCentral()
+}
+
+ext {
+    set('springCloudVersion', 'Hoxton.SR5')
 }
 
 dependencies {
-    testImplementation 'junit:junit:4.11'
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'junit:junit:4.12'
+    compileOnly 'org.projectlombok:lombok:1.18.20'
 }
 
-test {
-    useJUnitPlatform()
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:Finchley.RELEASE"
+    }
 }
