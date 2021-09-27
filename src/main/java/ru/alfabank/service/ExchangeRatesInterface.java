@@ -11,5 +11,5 @@ public interface ExchangeRatesInterface {
 
     List<String> getCodes() throws ExchangeRatesException;
 
-    int getKeyTag(String charCode) throws ExchangeRatesException;
+    int getDifferentRatios(String charCode) throws ExchangeRatesException;
 }

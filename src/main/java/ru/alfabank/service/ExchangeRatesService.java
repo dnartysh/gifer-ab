@@ -56,7 +56,7 @@ public class ExchangeRatesService implements ExchangeRatesInterface {
     }
 
     @Override
-    public int getKeyTag(String charCode) throws ExchangeRatesException {
+    public int getDifferentRatios(String charCode) throws ExchangeRatesException {
         updateRates();
         updatePreviousRates();
 

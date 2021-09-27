@@ -7,6 +7,7 @@ plugins {
 
 group 'ru.alfabank'
 version '1.0-SNAPSHOT'
+mainClassName = 'ru.alfabank.App'
 
 task copyJarToRoot {
     doLast {

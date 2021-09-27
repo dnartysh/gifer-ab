@@ -39,6 +39,6 @@ public class AppController {
 
     @GetMapping("/gif/{code}")
     public ResponseEntity<Map> getGif(@PathVariable String code) throws ExchangeRatesException {
-        return gifService.getGif(exchangeRatesService.getKeyTag(code) < 0 ? brokeTag : richTag);
+        return gifService.getGif(exchangeRatesService.getDifferentRatios(code) < 0 ? brokeTag : richTag);
     }
 }

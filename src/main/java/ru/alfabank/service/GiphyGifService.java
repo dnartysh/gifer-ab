@@ -22,6 +22,9 @@ public class GiphyGifService implements GiphyGifInterface {
 
     @Override
     public ResponseEntity<Map> getGif(String tag) {
-        return gifClient.getRandomGif(appId, tag);
+        ResponseEntity<Map> response = gifClient.getRandomGif(appId, tag);
+        response.getBody().put("compareResult", tag);
+
+        return response;
     }
 }
