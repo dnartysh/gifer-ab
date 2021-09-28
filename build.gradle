@@ -9,12 +9,10 @@ group 'ru.alfabank'
 version '1.0-SNAPSHOT'
 mainClassName = 'ru.alfabank.App'
 
-task copyJarToRoot {
-    doLast {
-        copy {
-            from './build/libs/gifer-1.0.0.jar'
-            into "./"
-        }
+task copyJarToBin {
+    copy {
+        from './build/libs/Gifer-AB-1.0-SNAPSHOT.jar'
+        into "./"
     }
 }
 

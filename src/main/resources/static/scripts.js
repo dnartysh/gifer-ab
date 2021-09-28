@@ -1,4 +1,4 @@
-const general_url = 'http://localhost:8080/';
+const general_url = './gifer/';
 
 function initGifs() {
     $.ajax({
