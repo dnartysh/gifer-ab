@@ -111,7 +111,7 @@ public class AppControllerTest {
         Mockito.when(gifService.getGif(brokeTag))
                 .thenReturn(responseEntity);
 
-        mockMvc.perform(get("/gg/gif/TESTCODE")
+        mockMvc.perform(get("/gifer/gif/TESTCODE")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(jsonPath("$.compareResult").value(brokeTag));
