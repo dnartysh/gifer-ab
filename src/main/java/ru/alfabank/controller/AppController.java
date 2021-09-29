@@ -32,13 +32,13 @@ public class AppController {
         this.gifService = gifService;
     }
 
-    @GetMapping("/code")
+    @GetMapping("gifer/code")
     public List<String> getCodes() throws ExchangeRatesException {
         return exchangeRatesService.getCodes();
     }
 
-    @GetMapping("/gif/{code}")
+    @GetMapping("gifer/gif/{code}")
     public ResponseEntity<Map> getGif(@PathVariable String code) throws ExchangeRatesException {
-        return gifService.getGif(exchangeRatesService.getDifferentRatios(code) < 0 ? brokeTag : richTag);
+        return gifService.getGif(exchangeRatesService.getDifferentRatios(code.toUpperCase()) < 0 ? brokeTag : richTag);
     }
 }
