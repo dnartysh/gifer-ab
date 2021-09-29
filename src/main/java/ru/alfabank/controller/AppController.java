@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping
+@RequestMapping("/gifer/")
 public class AppController {
     private ExchangeRatesInterface exchangeRatesService;
     private GiphyGifInterface gifService;
@@ -32,12 +32,12 @@ public class AppController {
         this.gifService = gifService;
     }
 
-    @GetMapping("gifer/code")
+    @GetMapping("code")
     public List<String> getCodes() throws ExchangeRatesException {
         return exchangeRatesService.getCodes();
     }
 
-    @GetMapping("gifer/gif/{code}")
+    @GetMapping("gif/{code}")
     public ResponseEntity<Map> getGif(@PathVariable String code) throws ExchangeRatesException {
         return gifService.getGif(exchangeRatesService.getDifferentRatios(code.toUpperCase()) < 0 ? brokeTag : richTag);
     }
